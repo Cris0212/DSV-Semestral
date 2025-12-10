@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro - EduTechPlus</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="ScripAuth/registro.js"></script>
+</head>
+<body class="bg-gradient-to-br from-gray-900 to-gray-800 min-h-screen flex items-center justify-center">
+
+    <div class="w-full max-w-md p-6">
+        
+        <h1 class="text-3xl font-bold text-center text-white mb-8">Crear Nueva Cuenta</h1>
+
+        <div class="p-8 rounded-xl shadow-2xl border border-gray-600/50
+                    bg-white/10 backdrop-blur-md">
+            
+            <div class="mb-4">
+                <label for="registerNombre" class="block text-sm font-medium text-gray-200 mb-1">Nombre Completo</label>
+                <input type="text" id="nombre" required
+                       class="mt-1 block w-full px-4 py-2 border border-gray-500 rounded-lg 
+                              focus:ring-blue-500 focus:border-blue-500 bg-gray-700 text-white placeholder-gray-400">
+            </div>
+            
+            <div class="mb-4">
+                <label for="registerCorreo" class="block text-sm font-medium text-gray-200 mb-1">Correo Electrónico</label>
+                <input type="email" id="correo" required
+                       class="mt-1 block w-full px-4 py-2 border border-gray-500 rounded-lg 
+                              focus:ring-blue-500 focus:border-blue-500 bg-gray-700 text-white placeholder-gray-400">
+            </div>
+            
+            <div class="mb-4">
+                <label for="registerContrasena" class="block text-sm font-medium text-gray-200 mb-1">Contraseña</label>
+                <input type="password" id="contrasena" required
+                       class="mt-1 block w-full px-4 py-2 border border-gray-500 rounded-lg 
+                              focus:ring-blue-500 focus:border-blue-500 bg-gray-700 text-white placeholder-gray-400">
+            </div>
+            
+            <div class="mb-6">
+                <label for="registerRol" class="block text-sm font-medium text-gray-200 mb-1">Rol</label>
+                <select id="rol" required
+                        class="mt-1 block w-full px-4 py-2 border border-gray-500 rounded-lg 
+                               focus:ring-blue-500 focus:border-blue-500 bg-gray-700 text-white">
+                    <option value="1">1 - Alumno</option>
+                    <option value="2">2 - Profesor</option>
+                </select>
+            </div>
+
+            <button class="w-full py-2 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 transition" onclick="registrarUsuario()">
+                Registrarme
+            </button>
+            
+            <p class="text-center mt-4 text-sm text-gray-300">
+                ¿Ya tienes cuenta? 
+                <a href="login.html" class="text-blue-400 font-medium hover:text-blue-300">Iniciar Sesión</a>
+            </p>
+        </div>
+    </div>
+    
+
+</body>
+</html>
