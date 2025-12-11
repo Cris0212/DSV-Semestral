@@ -29,7 +29,7 @@ async function registrarUsuario() {
     };
 
     try{
-        const response = await fetch('http://localhost:5095/api/Auth/registro', {
+        const response = await fetch('https://localhost:7296/api/Auth/registro', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
