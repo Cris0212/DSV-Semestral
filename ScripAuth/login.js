@@ -7,10 +7,9 @@ async function iniciarSesion() {
         return;
     }
     
-
     const requestBody = {
-        correo: correo,
-        contrasena: contrasena 
+        Correo: correo,
+        Contrasena: contrasena 
     };
 
     try {
@@ -23,32 +22,39 @@ async function iniciarSesion() {
         });
         
         if (response.ok) {
-            const data = await response.json();
-            
-           
-            
-            
-            localStorage.setItem('userData', JSON.stringify(data));
-            localStorage.setItem('isLoggedIn', 'true'); 
-
+            const userData = await response.json();
             alert('Inicio de sesión exitoso.');
-            
-         
             document.getElementById('correo').value = '';
             document.getElementById('contrasena').value = '';
+
+            const rol = String(userData.rol || userData.Rol).toLowerCase(); 
+
+            if (rol === 'alumno' || rol === '1') {
+             
+                localStorage.setItem('userData', JSON.stringify(userData));
+                localStorage.setItem('isLoggedIn', 'true');
+                window.location.href = 'alumnos.html'; 
+            } else if (rol === 'profesor' || rol === '2') {
             
-            //  acordame de cambiar el nombre cuando se haga la pantalla principal
-            window.location.href = 'principal.html'; 
+                localStorage.setItem('userData', JSON.stringify(userData));
+                localStorage.setItem('isLoggedIn', 'true');
+                window.location.href = 'profesores.html'; 
+            } else {
+
+                console.error("Rol de usuario no reconocido:", rol);
+                alert('Rol de usuario no reconocido. Serás redirigido a la página de inicio de sesión.');
+                window.location.href = 'login.html'; 
+            }
 
         } else {
             const errorText = await response.text();
-            let errorMessage = `Error del servidor (${response.status}): ${errorText}`;
+            let errorMessage = `Error del servidor (${response.status}): Credenciales incorrectas.`;
             
             try {
                 const errorData = JSON.parse(errorText);
-                errorMessage = errorData.detail || errorData.message || 'Credenciales incorrectas.';
+                errorMessage = errorData.message || errorData.title || errorData.detail || 'Credenciales incorrectas.';
             } catch (e) {
-                
+                errorMessage = errorText; 
             }
             throw new Error(`Inicio de sesión fallido: ${errorMessage}`);
         }
