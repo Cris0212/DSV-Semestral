@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:5215/api";
+const API_URL = "https://localhost:7296/api";
 
 function obtenerProfesorActual() {
     const json = localStorage.getItem("profesorActual");

@@ -1,4 +1,4 @@
-// ScripAuth/configProfesor.js
+
 
 document.addEventListener("DOMContentLoaded", () => {
     // Si ya está configurado, mandamos directo al panel

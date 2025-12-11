@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:5215/api";
+const API_URL = "https://localhost:7296/api";
 
 let usuarioActual = null;
 let profesorActual = null;
@@ -15,15 +15,34 @@ function obtenerUsuarioActual() {
     }
 }
 
+// panelProfesor.js
+
 function asegurarSesionProfesor() {
-    usuarioActual = obtenerUsuarioActual();
+  
+    usuarioActual = obtenerUsuarioActual() || JSON.parse(localStorage.getItem("userData"));
+
     if (!usuarioActual) {
         alert("Debes iniciar sesión primero.");
         window.location.href = "login.html";
         return false;
     }
 
-    // Por ahora asumimos que solo un profesor entra aquí
+
+    const rolGuardado = String(usuarioActual.Rol || usuarioActual.rol || '');
+    const rolNormalizado = rolGuardado.trim().toLowerCase();
+    
+    // Verificamos si es 'profesor' (todo minúscula)
+    if (rolNormalizado !== 'profesor') { 
+        console.warn("Intento de acceso denegado. Rol detectado:", rolGuardado);
+        alert("Acceso denegado. Este panel es exclusivo para profesores.");
+        
+        // Limpiamos la sesión del usuario no autorizado
+        localStorage.clear(); 
+        window.location.href = "login.html";
+        return false;
+    }
+
+    // Si llega aquí, el rol es "Profesor"
     return true;
 }
 

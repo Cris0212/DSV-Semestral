@@ -33,12 +33,12 @@ async function iniciarSesion() {
              
                 localStorage.setItem('userData', JSON.stringify(userData));
                 localStorage.setItem('isLoggedIn', 'true');
-                window.location.href = 'alumnos.html'; 
+                window.location.href = 'panelEstudiante.html'; 
             } else if (rol === 'profesor' || rol === '2') {
             
                 localStorage.setItem('userData', JSON.stringify(userData));
                 localStorage.setItem('isLoggedIn', 'true');
-                window.location.href = 'profesores.html'; 
+                window.location.href = 'panel-profesor.html'; 
             } else {
 
                 console.error("Rol de usuario no reconocido:", rol);
