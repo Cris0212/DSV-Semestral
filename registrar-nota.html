@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <title>Registrar Notas - EduTechPlus</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="ScriptsProfesor/notas.js" defer></script>
+</head>
+<body class="bg-gray-900 text-white min-h-screen">
+
+<div class="min-h-screen flex">
+
+    <!-- SIDEBAR -->
+    <aside class="w-64 bg-gray-950/80 border-r border-gray-800 backdrop-blur-xl flex flex-col">
+        <div class="px-6 py-5 border-b border-gray-800">
+            <h1 class="text-2xl font-bold">EduTechPlus</h1>
+            <p class="text-xs text-gray-400">Profesor</p>
+        </div>
+
+        <nav class="flex-1 p-4 space-y-2 text-sm">
+            <button onclick="window.location.href='panel-profesor.html'"
+                    class="w-full text-left px-4 py-2 rounded-lg hover:bg-white/10 transition">
+                Panel principal
+            </button>
+
+            <button onclick="window.location.href='crear-quiz.html'"
+                    class="w-full text-left px-4 py-2 rounded-lg hover:bg-white/10 transition">
+                Crear Quiz
+            </button>
+
+            <button onclick="window.location.href='subir-material.html'"
+                    class="w-full text-left px-4 py-2 rounded-lg hover:bg-white/10 transition">
+                Subir Material
+            </button>
+
+            <button onclick="window.location.href='notas.html'"
+                    class="w-full text-left px-4 py-2 rounded-lg bg-emerald-600/70 hover:bg-emerald-600 transition">
+                Registrar Notas
+            </button>
+        </nav>
+    </aside>
+
+    <!-- CONTENIDO -->
+    <main class="flex-1 p-8 space-y-8">
+
+        <header class="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+            <div>
+                <h2 class="text-2xl font-bold">Registrar notas</h2>
+                <p class="text-sm text-gray-400">
+                    Profesor: <span id="prof-nombre">-</span> ·
+                    Colegio: <span id="prof-colegio">-</span> ·
+                    Turno: <span id="prof-turno">-</span>
+                </p>
+            </div>
+
+            <button onclick="window.location.href='panel-profesor.html'"
+                    class="px-4 py-2 bg-gray-700 hover:bg-gray-600 rounded-lg text-sm font-semibold">
+                Volver al panel
+            </button>
+        </header>
+
+        <section class="max-w-4xl bg-white/10 border border-white/10 rounded-xl p-6 space-y-4">
+
+            <div class="grid md:grid-cols-3 gap-4">
+                <div>
+                    <label class="block text-sm text-gray-200 mb-1">Alumno</label>
+                    <input id="nota-alumno"
+                           class="w-full px-3 py-2 rounded-lg bg-gray-900 border border-gray-700 text-sm"
+                           placeholder="Nombre del alumno" />
+                </div>
+
+                <div>
+                    <label class="block text-sm text-gray-200 mb-1">Materia</label>
+                    <select id="nota-materia"
+                            class="w-full px-3 py-2 rounded-lg bg-gray-900 border border-gray-700 text-sm">
+                        <!-- JS -->
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-sm text-gray-200 mb-1">Grupo</label>
+                    <input id="nota-grupo"
+                           class="w-full px-3 py-2 rounded-lg bg-gray-900 border border-gray-700 text-sm"
+                           placeholder="Ej: 12 A" />
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-4">
+                <div>
+                    <label class="block text-sm text-gray-200 mb-1">Trimestre</label>
+                    <select id="nota-trimestre"
+                            class="w-full px-3 py-2 rounded-lg bg-gray-900 border border-gray-700 text-sm">
+                        <option value="1">1er Trimestre</option>
+                        <option value="2">2do Trimestre</option>
+                        <option value="3">3er Trimestre</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-sm text-gray-200 mb-1">Tipo</label>
+                    <select id="nota-tipo"
+                            class="w-full px-3 py-2 rounded-lg bg-gray-900 border border-gray-700 text-sm">
+                        <option value="Diaria">Diaria</option>
+                        <option value="Apreciación">Apreciación</option>
+                        <option value="Examen">Examen Final</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-sm text-gray-200 mb-1">Nota</label>
+                    <input id="nota-valor" type="number" min="0" max="100"
+                           class="w-full px-3 py-2 rounded-lg bg-gray-900 border border-gray-700 text-sm"
+                           placeholder="Ej: 95" />
+                </div>
+            </div>
+
+            <div>
+                <label class="block text-sm text-gray-200 mb-1">Comentario (opcional)</label>
+                <textarea id="nota-comentario" rows="3"
+                          class="w-full px-3 py-2 rounded-lg bg-gray-900 border border-gray-700 text-sm"
+                          placeholder="Comentario para el estudiante o para ti."></textarea>
+            </div>
+
+            <div id="nota-msg" class="text-sm mt-1"></div>
+
+            <button id="btn-guardar-nota"
+                    class="mt-2 px-4 py-2 bg-emerald-600 hover:bg-emerald-700 rounded-lg font-semibold text-sm">
+                Guardar nota
+            </button>
+        </section>
+
+    </main>
+</div>
+
+</body>
+</html>

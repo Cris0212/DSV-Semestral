@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Panel del Profesor - EduTechPlus</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="ScriptsProfesor/panelProfesor.js" defer></script>
+</head>
+
+<body class="bg-gray-900 text-white min-h-screen">
+
+<div class="flex min-h-screen">
+
+    <!-- SIDEBAR -->
+    <aside class="w-64 bg-gray-950/80 border-r border-gray-800 backdrop-blur-xl flex flex-col">
+        <div class="px-6 py-5 border-b border-gray-800">
+            <h1 class="text-2xl font-bold">EduTechPlus</h1>
+            <p class="text-xs text-gray-400">Panel del Profesor</p>
+        </div>
+
+        <nav class="flex-1 p-4 space-y-2">
+            <button id="nav-inicio"
+                    class="w-full text-left px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition">
+                Inicio
+            </button>
+
+            <button id="nav-quizzes"
+                    class="w-full text-left px-4 py-2 rounded-lg hover:bg-white/10 transition">
+                Quizzes
+            </button>
+
+            <button id="nav-materiales"
+                    class="w-full text-left px-4 py-2 rounded-lg hover:bg-white/10 transition">
+                Material de Clase
+            </button>
+
+            <button id="nav-notas"
+                    class="w-full text-left px-4 py-2 rounded-lg hover:bg-white/10 transition">
+                Notas
+            </button>
+        </nav>
+
+        <div class="p-4 border-t border-gray-800 text-sm">
+            <p id="prof-mini" class="text-gray-400"></p>
+            <button id="btn-salir" class="mt-2 text-red-400 hover:text-red-300">
+                Cerrar sesión
+            </button>
+        </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="flex-1 p-8 space-y-8">
+
+        <!-- HEADER -->
+        <header class="flex flex-col md:flex-row md:justify-between md:items-center gap-4">
+            <div>
+                <h2 class="text-3xl font-bold">Bienvenido, <span id="prof-nombre">Profesor</span></h2>
+                <p id="prof-subtitulo" class="text-gray-400 text-sm">Cargando datos...</p>
+            </div>
+
+            <div class="flex gap-3">
+                <button id="btn-ir-quiz"
+                        class="px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg shadow font-semibold">
+                    Crear nuevo Quiz
+                </button>
+
+                <button id="btn-ir-material"
+                        class="px-4 py-2 bg-purple-600 hover:bg-purple-700 rounded-lg shadow font-semibold">
+                    Subir Material
+                </button>
+            </div>
+        </header>
+
+        <!-- CARDS -->
+        <section class="grid md:grid-cols-3 gap-6">
+
+            <div class="bg-white/10 p-6 rounded-xl border border-white/10">
+                <p class="text-gray-300 text-sm">Colegio</p>
+                <p id="prof-colegio" class="text-2xl font-bold mt-1">-</p>
+                <p class="text-xs text-gray-400 mt-1">
+                    Turno: <span id="prof-turno">-</span>
+                </p>
+            </div>
+
+            <div class="bg-white/10 p-6 rounded-xl border border-white/10">
+                <p class="text-gray-300 text-sm">Materias Asignadas</p>
+                <p id="contador-materias" class="text-3xl font-bold mt-1">0</p>
+            </div>
+
+            <div class="bg-white/10 p-6 rounded-xl border border-white/10">
+                <p class="text-gray-300 text-sm">Grupos</p>
+                <p id="contador-grupos" class="text-3xl font-bold mt-1">0</p>
+            </div>
+
+        </section>
+
+        <!-- LISTS -->
+        <section class="grid lg:grid-cols-2 gap-6">
+
+            <!-- Materias y Grupos -->
+            <div class="space-y-6">
+
+                <div class="bg-white/10 p-6 rounded-xl border border-white/10">
+                    <h3 class="font-semibold mb-2">Materias</h3>
+                    <ul id="lista-materias" class="text-gray-300 text-sm space-y-1"></ul>
+                </div>
+
+                <div class="bg-white/10 p-6 rounded-xl border border-white/10">
+                    <h3 class="font-semibold mb-2">Grupos</h3>
+                    <ul id="lista-grupos" class="text-gray-300 text-sm space-y-1"></ul>
+                </div>
+
+            </div>
+
+            <!-- Últimos Quizzes y Material -->
+            <div class="space-y-6">
+
+                <div class="bg-white/10 p-6 rounded-xl border border-white/10">
+                    <h3 class="font-semibold mb-2">Últimos Quizzes</h3>
+                    <ul id="lista-quizzes" class="text-gray-300 text-sm space-y-1"></ul>
+                </div>
+
+                <div class="bg-white/10 p-6 rounded-xl border border-white/10">
+                    <h3 class="font-semibold mb-2">Material Reciente</h3>
+                    <ul id="lista-materiales" class="text-gray-300 text-sm space-y-1"></ul>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+</body>
+</html>
